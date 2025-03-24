@@ -1,0 +1,7 @@
+{
+    "name": "CustomDiscoverStateLib",
+    "version_number": "1.0.0",
+    "website_url": "https://github.com/Kistras/REPO-Scanner",
+    "description": "Library for your mod that allows for custom-colored discoveries (similar to the thing you see when a valuable is encountered for the first time)",
+    "dependencies": ["BepInEx-BepInExPack-5.4.2100"]
+}
