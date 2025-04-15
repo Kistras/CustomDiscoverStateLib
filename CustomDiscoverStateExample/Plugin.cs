@@ -1,23 +1,4 @@
-## What does it do
-This library allows you to create custom colored highlights for ValuableDiscoverGraphic (the thing that appears when you see a valuable or a dead friend for a first time). Doesn't do anything by itself, other mods are meant to use it.
-
-GUID: `Kistras-CustomDiscoverStateLib`
-
-## Feature overview
-- Create custom static ValuableDiscoverGraphic states. To use them, you need to call `ValuableDiscover.instance.New()` with the state you created.
-- Create custom conditional ValuableDiscoverGraphic states. These will be applied automatically if prespecified (by you) conditions are met.
-- Create custom dynamic ValuableDiscoverGraphic states. These will be applied automatically if prespecified (by you) conditions are met, and you can change the color of the state upon creation. This is useful for mods that want to change the color of the state based on some conditions.
-
-Priority of the states is as follows:
-1. Static states (triggered manually by `ValuableDiscover.instance.New()`)
-2. Conditional states
-3. Dynamic states
-4. Base game states
-
-## Example plugin
-[Visit github page for working color-coding](https://github.com/Kistras/CustomDiscoverStateLib?tab=readme-ov-file#usage)
-```cs
-using System;
+﻿using System;
 using System.Linq;
 using BepInEx;
 using BepInEx.Logging;
@@ -88,25 +69,3 @@ public class Plugin : BaseUnityPlugin {
         }
     }
 }
-```
-<details>
-  <summary>This is what you can expect from using this library</summary>
-  <img src="https://i.imgur.com/Vh39siZ.png" alt="A thingum hath been enlumined"/>
-</details>
-Don't forget to list this library as dependency.
-
-## Base game colors (for reference)
-```cs
-ValuableDiscoverGraphic.State baseGameReminder = CustomDiscoverState.AddNewDiscoverGraphic(
-    middle: new Color(0.642f, 0.619f, 0.481f, 0.039f), 
-    corner: new Color(0.642f, 0.619f, 0.481f, 0.39f));
-ValuableDiscoverGraphic.State baseGameBad = CustomDiscoverState.AddNewDiscoverGraphic(
-    middle: new Color(1f, 0.0f, 0.067f, 0.059f), 
-    corner: new Color(1f, 0.1f, 0.067f, 0.59f));
-ValuableDiscoverGraphic.State baseGameDiscover = CustomDiscoverState.AddNewDiscoverGraphic(
-    middle: new Color(1f, 0.863f, 0f, 0.118f), 
-    corner: new Color(1f, 0.863f, 0f, 1f));
-```
-
-## Why make this?
-Because I've seen two mods already that implement this functionality and [I'm in the process of making the third one](https://thunderstore.io/c/repo/p/Kistras/Valuables_Scanner/). So making a library seemed like a right choice
