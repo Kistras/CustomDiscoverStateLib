@@ -3,6 +3,13 @@ This library allows you to create custom colored highlights for ValuableDiscover
 
 GUID: `Kistras-CustomDiscoverStateLib`
 
+# YOU MAY NOT WANT THIS
+I suggest looking into vanilla ValuableDiscoverCustom class if you need:
+- Simple custom colors for discoveries OR
+- You don't need anything complex (like rainbow-coded valuables).
+
+This works better for my usecase, where I needed to dynamically scan for items & highlight them without interfering with the game _too much_.
+
 ## Feature overview
 - Create custom static ValuableDiscoverGraphic states. To use them, you need to call `ValuableDiscover.instance.New()` with the state you created.
 - Create custom conditional ValuableDiscoverGraphic states. These will be applied automatically if prespecified (by you) conditions are met.
@@ -15,6 +22,7 @@ Priority of the states is as follows:
 4. Base game states
 
 ## Example plugin
+[Visit github page for working color-coding](https://github.com/Kistras/CustomDiscoverStateLib?tab=readme-ov-file#usage)
 ```cs
 using System;
 using System.Linq;
@@ -30,7 +38,7 @@ using State = ValuableDiscoverGraphic.State;
 [BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
 [BepInDependency("Kistras-CustomDiscoverStateLib")]
 public class Plugin : BaseUnityPlugin {
-    internal static new ManualLogSource [README.md](../README.md)Logger;
+    internal static new ManualLogSource Logger;
 
     // Apply this one manually to PhysGrabObjects
     private static State newDiscoverGraphic = CDS.AddNewDiscoverGraphic(
@@ -44,7 +52,7 @@ public class Plugin : BaseUnityPlugin {
             if (!physGrabObject) return false;
             ValuableObject valuableObject = physGrabObject.transform.GetComponent<ValuableObject>();
             if (!valuableObject) return false;
-            return valuableObject.dollarValueCurrent > 1500;[README.md](../README.md)
+            return valuableObject.dollarValueCurrent > 1500;
         },
         middle: new Color(0.0f, 0.0f, 0.5f, 0.075f), 
         corner: new Color(0.0f, 0.1f, 0.6f, 0.75f));

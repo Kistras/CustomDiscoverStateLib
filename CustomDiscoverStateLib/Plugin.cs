@@ -94,12 +94,17 @@ public static class CustomDiscoverState {
 internal class Patches {
     [HarmonyPatch(typeof(ValuableDiscover), "New")]
     [HarmonyPrefix]
-    public static bool ValuableDiscoverPatch(ValuableDiscover __instance, PhysGrabObject _target, State _state) {
+    public static bool ValuableDiscoverPatch(ValuableDiscover __instance, PhysGrabObject _target, State _state, ValuableDiscoverCustom _custom = null) {
+        if (_custom != null) {
+            // Assume be already handled
+            return true;
+        }
+        
         Color? middle = null;
         Color? corner = null;
-        // Check for custom states
+        // custom states
         if (!CDS.customStates.TryGetValue(_state, out CDS.CustomDiscoverGraphic customState)) {
-            // Check for conditional states
+            // conditional states
             bool foundDynamic = false;
             foreach (var conditionalState in CDS.conditionalStates) {
                 if (conditionalState.Value.Invoke(__instance, _target)) {
@@ -110,7 +115,7 @@ internal class Patches {
                     break;
                 }
             }
-            // Check for dynamic states if previous checks failed
+            // dynamic states
             if (!foundDynamic || customState == null) {
                 foreach (var dynamicState in CDS.dynamicStates) {
                     if (dynamicState.Value.Invoke(__instance, _target, out middle, out corner)) {
@@ -119,7 +124,6 @@ internal class Patches {
                         break;
                     }
                 }
-                // If no dynamic state was found, return true to skip the default behavior
                 if (!foundDynamic) {
                     return true;
                 }

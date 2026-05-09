@@ -3,6 +3,13 @@ This library allows you to create custom colored highlights for ValuableDiscover
 
 GUID: `Kistras-CustomDiscoverStateLib`
 
+# YOU MAY NOT WANT THIS
+I suggest looking into vanilla ValuableDiscoverCustom class if you need:
+- Simple custom colors for discoveries OR
+- You don't need anything complex (like rainbow-coded valuables).
+
+This works better for my usecase, where I needed to dynamically scan for items & highlight them without interfering with the game _too much_.
+
 ## Feature overview
 - Create custom static ValuableDiscoverGraphic states. To use them, you need to call `ValuableDiscover.instance.New()` with the state you created.
 - Create custom conditional ValuableDiscoverGraphic states. These will be applied automatically if prespecified (by you) conditions are met.
