@@ -8,7 +8,7 @@ I suggest looking into vanilla ValuableDiscoverCustom class if you need:
 - Simple custom colors for discoveries OR
 - You don't need anything complex (like rainbow-coded valuables).
 
-This works better for my usecase, where I needed to dynamically scan for items & highlight them without interfering with the game _too much_.
+This works better for my usecase, where I needed to dynamically scan for items & highlight them without interfering with the game _too much_. Also this was made in the time when there were no easy support for this sort of thing
 
 ## Feature overview
 - Create custom static ValuableDiscoverGraphic states. To use them, you need to call `ValuableDiscover.instance.New()` with the state you created.

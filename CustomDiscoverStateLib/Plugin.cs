@@ -94,9 +94,10 @@ public static class CustomDiscoverState {
 internal class Patches {
     [HarmonyPatch(typeof(ValuableDiscover), "New")]
     [HarmonyPrefix]
-    public static bool ValuableDiscoverPatch(ValuableDiscover __instance, PhysGrabObject _target, State _state, ValuableDiscoverCustom _custom = null) {
+    public static bool ValuableDiscoverPatch(ValuableDiscover __instance, PhysGrabObject _target, ref State _state, ValuableDiscoverCustom _custom = null) {
         if (_custom != null) {
             // Assume be already handled
+            _state = State.Custom;
             return true;
         }
         
